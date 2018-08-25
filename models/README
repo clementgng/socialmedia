@@ -1,0 +1,3 @@
+This folder contains the MongoDB models.
+
+User.js - Model schema for the User of the app.
