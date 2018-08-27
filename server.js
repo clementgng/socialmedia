@@ -33,6 +33,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Passport config which contains the type of passport strategy and pass in passport to the config file
+// Use passport to make endpoint routes public or private
 require("./config/passport")(passport);
 
 //Use routes
