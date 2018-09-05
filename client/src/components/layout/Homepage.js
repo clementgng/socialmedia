@@ -1,10 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
 // use Link <Link></Link>to replace <a></a> tag
 // <a href="[link goes here]" changes to <Link to="[link goes here]"
 
 class Homepage extends React.Component {
+  componentDidMount() {
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push("/dashboard");
+    }
+  }
+
   render() {
     return (
       <div className="homepage">
@@ -33,4 +41,12 @@ class Homepage extends React.Component {
   }
 }
 
-export default Homepage;
+Homepage.propTypes = {
+  auth: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+export default connect(mapStateToProps)(Homepage);

@@ -7,8 +7,31 @@ import Register from "./components/auth/Register";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store/store";
+import jwt_decode from "jwt-decode";
+import setAuthToken from "./utils/setAuthToken";
+import { setCurrentUser, logoutUser } from "./actions/authActions";
 
 import "./App.css";
+
+// Check for the token
+if (localStorage.jwtToken) {
+  // Set the jwtToken to Authorization Header
+  setAuthToken(localStorage.jwtToken);
+  // Decode the token we passed
+  const decoded_token = jwt_decode(localStorage.jwtToken);
+  // Dispatch the action from the store and set the current user to have their token
+  store.dispatch(setCurrentUser(decoded_token));
+
+  // Check if token is expired
+  const currentTime = Date.now() / 1000;
+  if (decoded_token.exp < currentTime) {
+    //Logout the user
+    store.dispatch(logoutUser());
+    // TODO: Clear current profile
+    // Redirect to login page
+    window.location.href = "/login";
+  }
+}
 
 // Use router to encapsulate
 // Use Route to assign a component to a specific route

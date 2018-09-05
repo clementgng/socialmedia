@@ -1,10 +1,10 @@
-import { REGISTER_USER_FAILED } from "../actions/constants";
+import { ERROR_HANDLER } from "../actions/constants";
 
 const initialState = {};
 
 export const errorReducer = (state = initialState, action = {}) => {
   switch (action.type) {
-    case REGISTER_USER_FAILED:
+    case ERROR_HANDLER:
       return action.payload;
     default:
       return state;
