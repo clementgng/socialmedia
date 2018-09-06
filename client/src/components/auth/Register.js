@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { registerUser } from "../../actions/authActions";
 import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
+import InputTextField from "../shared/InputTextField";
 
 class Register extends React.Component {
   constructor() {
@@ -62,85 +63,51 @@ class Register extends React.Component {
                 Create your DevConnector account
               </p>
               <form noValidate onSubmit={this.onSubmit}>
-                <div className="form-group">
-                  <input
-                    type="text"
-                    className={classnames("form-control form-control-lg", {
-                      "is-invalid": errors.firstName
-                    })}
-                    placeholder="First Name"
-                    name="firstName"
-                    value={this.state.firstName}
-                    onChange={this.onChange}
-                  />
-                  {errors.firstName && (
-                    <div className="invalid-feedback">{errors.firstName}</div>
-                  )}
-                </div>
-                <div className="form-group">
-                  <input
-                    type="text"
-                    className={classnames("form-control form-control-lg", {
-                      "is-invalid": errors.lastName
-                    })}
-                    placeholder="Last Name"
-                    name="lastName"
-                    value={this.state.lastName}
-                    onChange={this.onChange}
-                  />
-                  {errors.lastName && (
-                    <div className="invalid-feedback">{errors.lastName}</div>
-                  )}
-                </div>
-                <div className="form-group">
-                  <input
-                    type="email"
-                    className={classnames("form-control form-control-lg", {
-                      "is-invalid": errors.email
-                    })}
-                    placeholder="Email Address"
-                    name="email"
-                    value={this.state.email}
-                    onChange={this.onChange}
-                  />
-                  {errors.email && (
-                    <div className="invalid-feedback">{errors.email}</div>
-                  )}
-                  {/* <small className="form-text text-muted">
+                <InputTextField
+                  type="text"
+                  placeholder="First Name"
+                  name="firstName"
+                  value={this.state.firstName}
+                  onChange={this.onChange}
+                  error={errors.firstName}
+                />
+                <InputTextField
+                  type="text"
+                  placeholder="Last Name"
+                  name="lastName"
+                  value={this.state.lastName}
+                  onChange={this.onChange}
+                  error={errors.lastName}
+                />
+                <InputTextField
+                  type="email"
+                  placeholder="Email Address"
+                  name="email"
+                  value={this.state.email}
+                  onChange={this.onChange}
+                  error={errors.email}
+                  info="This is a test for email"
+                />
+                {/* <small className="form-text text-muted">
                     This site uses Gravatar so if you want a profile image, use
                     a Gravatar email
                 </small> */}
-                </div>
-                <div className="form-group">
-                  <input
-                    type="password"
-                    className={classnames("form-control form-control-lg", {
-                      "is-invalid": errors.password
-                    })}
-                    placeholder="Password"
-                    name="password"
-                    value={this.state.password}
-                    onChange={this.onChange}
-                  />
-                  {errors.password && (
-                    <div className="invalid-feedback">{errors.password}</div>
-                  )}
-                </div>
-                <div className="form-group">
-                  <input
-                    type="password"
-                    className={classnames("form-control form-control-lg", {
-                      "is-invalid": errors.password2
-                    })}
-                    placeholder="Confirm Password"
-                    name="password2"
-                    value={this.state.password2}
-                    onChange={this.onChange}
-                  />
-                  {errors.password2 && (
-                    <div className="invalid-feedback">{errors.password2}</div>
-                  )}
-                </div>
+                <InputTextField
+                  type="password"
+                  placeholder="Password"
+                  name="password"
+                  value={this.state.password}
+                  onChange={this.onChange}
+                  error={errors.password}
+                />
+                <InputTextField
+                  type="password"
+                  placeholder="Confirm Password"
+                  name="password2"
+                  value={this.state.password2}
+                  onChange={this.onChange}
+                  error={errors.password2}
+                />
                 <input type="submit" className="btn btn-info btn-block mt-4" />
               </form>
             </div>
