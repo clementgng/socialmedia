@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
+import { clearCurrentProfile } from "../../actions/profileActions";
 import PropTypes from "prop-types";
 
 // use Link <Link></Link>to replace <a></a> tag
@@ -13,6 +14,7 @@ class Navbar extends React.Component {
   }*/
   onLogoutClick = event => {
     event.preventDefault();
+    this.props.clearCurrentProfile();
     this.props.logoutUser();
   };
 
@@ -92,5 +94,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { logoutUser }
+  { clearCurrentProfile, logoutUser }
 )(Navbar);

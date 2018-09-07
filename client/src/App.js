@@ -4,12 +4,15 @@ import Footer from "./components/layout/Footer";
 import Homepage from "./components/layout/Homepage";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import Dashboard from "./components/dashboard/Dashboard";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store/store";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
 import { setCurrentUser, logoutUser } from "./actions/authActions";
+import { clearCurrentProfile } from "./actions/profileActions";
+import PrivateRoute from "./components/shared/PrivateRoute";
 
 import "./App.css";
 
@@ -28,6 +31,7 @@ if (localStorage.jwtToken) {
     //Logout the user
     store.dispatch(logoutUser());
     // TODO: Clear current profile
+    store.dispatch(clearCurrentProfile());
     // Redirect to login page
     window.location.href = "/login";
   }
@@ -38,6 +42,7 @@ if (localStorage.jwtToken) {
 // <Route exact path =[/path/goes/here] component={[component name goes here]}
 
 // Create the store, apply thunk middleware, create rootReducer to take the sub reducers
+// Use switch for redirection
 
 class App extends Component {
   render() {
@@ -50,6 +55,9 @@ class App extends Component {
             <div className="container">
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
+              <Switch>
+                <PrivateRoute exact path="/dashboard" component={Dashboard} />
+              </Switch>
             </div>
             <Footer />
           </div>
