@@ -15,7 +15,13 @@ module.exports = function validateProfileInput(data) {
     errors.handle = "Profile handle is required";
   }
   if (validator.isEmpty(data.status)) {
-    errors.status = "Status is required";
+    errors.status = "Please specify a job title";
+  }
+  if (validator.isEmpty(data.skills)) {
+    errors.skills = "Please specify your skills";
+  }
+  if (validator.isEmpty(data.industry)) {
+    errors.industry = "Please specify the industry you work in";
   }
 
   // Validate and Check if the website and social media links are valid URLs

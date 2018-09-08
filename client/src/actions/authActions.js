@@ -4,6 +4,7 @@ import setAuthToken from "../utils/setAuthToken";
 import jwt_decode from "jwt-decode";
 
 //Register a user success/error handling
+// history is used to redirect to a new URI
 export const registerUser = (userData, history) => dispatch => {
   axios
     .post("/api/users/register", userData)

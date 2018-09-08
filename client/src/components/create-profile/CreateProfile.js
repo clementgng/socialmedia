@@ -2,12 +2,14 @@
 
 import React from "react";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import InputTextField from "../shared/InputTextField";
 import TextField from "../shared/TextField";
 import SelectList from "../shared/SelectList";
 import InputField from "../shared/InputField";
 import industryOptions from "./industryOptions";
+import { createProfile } from "../../actions/profileActions";
 
 class CreateProfile extends React.Component {
   constructor(props) {
@@ -31,13 +33,34 @@ class CreateProfile extends React.Component {
     };
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.errors) {
+      this.setState({ errors: nextProps.errors });
+    }
+  }
+
   onChange = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
 
   onSubmit = event => {
     event.preventDefault();
-    console.log("this is the submit");
+    const profileData = {
+      handle: this.state.handle,
+      company: this.state.company,
+      website: this.state.website,
+      location: this.state.location,
+      status: this.state.status,
+      industry: this.state.industry,
+      skills: this.state.skills,
+      githubusername: this.state.githubusername,
+      bio: this.state.bio,
+      twitter: this.state.twitter,
+      facebook: this.state.facebook,
+      linkedin: this.state.linkedin,
+      instagram: this.state.instagram
+    };
+    this.props.createProfile(profileData, this.props.history);
   };
 
   onDisplay = () => {
@@ -90,7 +113,6 @@ class CreateProfile extends React.Component {
             <div className="col-md-8 m-auto">
               <h1 className="display-4 text-center">Create your profile</h1>
               <p className="lead text-center">Get dome info for profile test</p>
-              <small className="d-block pb-3"> * = required fields</small>
               <form onSubmit={this.onSubmit}>
                 <InputTextField
                   placeholder="* Profile Handle"
@@ -159,14 +181,18 @@ class CreateProfile extends React.Component {
                 />
                 <TextField
                   placeholder="Bio"
-                  name="status"
-                  value={this.state.status}
+                  name="bio"
+                  value={this.state.bio}
                   onChange={this.onChange}
-                  error={errors.status}
+                  error={errors.bio}
                   info="Tell us a little about yourself"
                 />
                 <div className="mb-3">
-                  <button className="btn btn-light" onClick={this.onDisplay}>
+                  <button
+                    type="button"
+                    className="btn btn-light"
+                    onClick={this.onDisplay}
+                  >
                     Add social network links
                   </button>
                   <span className="text-muted">(This is optional)</span>
@@ -178,6 +204,7 @@ class CreateProfile extends React.Component {
                   />
                 </div>
               </form>
+              <small className="d-block pb-3"> * = required fields</small>
             </div>
           </div>
         </div>
@@ -196,4 +223,7 @@ const mapStateToProps = state => ({
   errors: state.errors
 });
 
-export default connect(mapStateToProps)(CreateProfile);
+export default connect(
+  mapStateToProps,
+  { createProfile }
+)(withRouter(CreateProfile));
