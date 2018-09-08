@@ -1,25 +1,14 @@
-/* This file is an input text form field for things such as login email/password
-register email/password/name info, etc. */
+/* This file is a text form field for things which are not inputs
+such as creating the user profile */
 
 import React from "react";
 import classnames from "classnames";
 import PropTypes from "prop-types";
 
-const InputTextField = ({
-  name,
-  placeholder,
-  value,
-  label,
-  error,
-  info,
-  type,
-  onChange,
-  disabled
-}) => {
+const TextField = ({ name, placeholder, value, error, info, onChange }) => {
   return (
     <div className="form-group">
-      <input
-        type={type}
+      <textarea
         className={classnames("form-control form-control-lg", {
           "is-invalid": error
         })}
@@ -27,7 +16,6 @@ const InputTextField = ({
         name={name}
         value={value}
         onChange={onChange}
-        disabled={disabled}
       />
       {info && <small className="form-text text-muted">{info}</small>}
       {error && <div className="invalid-feedback">{error}</div>}
@@ -35,20 +23,13 @@ const InputTextField = ({
   );
 };
 
-InputTextField.propTypes = {
+TextField.propTypes = {
   name: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
   value: PropTypes.string.isRequired,
   error: PropTypes.string,
   info: PropTypes.string,
-  type: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-  disabled: PropTypes.string
+  onChange: PropTypes.func.isRequired
 };
 
-// set the default type to text
-InputTextField.defaultProps = {
-  type: "text"
-};
-
-export default InputTextField;
+export default TextField;
