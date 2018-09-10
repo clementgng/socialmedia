@@ -1,3 +1,4 @@
+// Navigation UI at the top of the page with links to do stuff
 import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
@@ -23,6 +24,9 @@ class Navbar extends React.Component {
     const loggedIn = (
       <ul className="navbar-nav ml-auto">
         <li className="nav-item">
+          <Link className="nav-link" to="/dashboard">
+            Dashboard
+          </Link>
           <a href="" className="nav-link" onClick={this.onLogoutClick}>
             <img
               className="rounded-circle"

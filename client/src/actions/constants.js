@@ -1,3 +1,5 @@
+// constant types used for switch statements in actions
+
 export const ERROR_HANDLER = "ERROR_HANDLER";
 export const SET_CURRENT_USER = "SET_CURRENT_USER";
 

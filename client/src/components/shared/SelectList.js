@@ -1,4 +1,5 @@
-/* This file is a select list that user can drop down and scroll */
+/* This file is a select list that user can drop down and select */
+// TODO: add scrolling feature as the list increases
 
 import React from "react";
 import classnames from "classnames";

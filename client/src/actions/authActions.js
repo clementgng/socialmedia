@@ -1,3 +1,7 @@
+/*
+authActions.js has all the authentication actions to be sent to the reducer
+*/
+
 import { ERROR_HANDLER, SET_CURRENT_USER } from "./constants";
 import axios from "axios";
 import setAuthToken from "../utils/setAuthToken";

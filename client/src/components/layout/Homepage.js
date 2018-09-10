@@ -1,3 +1,4 @@
+// Homepage.js -- Initial page when a guest comes to the website
 import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";

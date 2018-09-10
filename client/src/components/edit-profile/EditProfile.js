@@ -1,4 +1,4 @@
-// CreateProfile.js -- The form to create the initial profile when user has registered, but not created a profile
+// EditProfile.js -- Get the current user and edit changes the user makes, else grab the current profile data
 
 import React from "react";
 import { connect } from "react-redux";
@@ -9,7 +9,8 @@ import TextField from "../shared/TextField";
 import SelectList from "../shared/SelectList";
 import InputField from "../shared/InputField";
 import industryOptions from "../shared/industryOptions";
-import { createProfile } from "../../actions/profileActions";
+import { createProfile, getCurrentProfile } from "../../actions/profileActions";
+import isEmpty from "../../validation/is-empty";
 
 class CreateProfile extends React.Component {
   constructor(props) {
@@ -33,9 +34,59 @@ class CreateProfile extends React.Component {
     };
   }
 
+  // Grab the current profile after rendering
+  componentDidMount() {
+    this.props.getCurrentProfile();
+  }
+
   componentWillReceiveProps(nextProps) {
     if (nextProps.errors) {
       this.setState({ errors: nextProps.errors });
+    }
+    if (nextProps.profile.profile) {
+      const profile = nextProps.profile.profile;
+
+      // Convert skills array to CSV
+      const skills = profile.skills.join(",");
+
+      //Convert null profile fields into an empty string or the edit
+      profile.company = !isEmpty(profile.company) ? profile.company : "";
+      profile.website = !isEmpty(profile.website) ? profile.website : "";
+      profile.location = !isEmpty(profile.location) ? profile.location : "";
+      profile.githubusername = !isEmpty(profile.githubusername)
+        ? profile.githubusername
+        : "";
+      profile.bio = !isEmpty(profile.bio) ? profile.bio : "";
+      profile.socialmedialinks = !isEmpty(profile.socialmedialinks)
+        ? profile.socialmedialinks
+        : {};
+      profile.facebook = !isEmpty(profile.socialmedialinks.facebook)
+        ? profile.socialmedialinks.facebook
+        : "";
+      profile.linkedin = !isEmpty(profile.socialmedialinks.linkedin)
+        ? profile.socialmedialinks.linkedin
+        : "";
+      profile.instagram = !isEmpty(profile.socialmedialinks.instagram)
+        ? profile.socialmedialinks.instagram
+        : "";
+      profile.twitter = !isEmpty(profile.socialmedialinks.twitter)
+        ? profile.socialmedialinks.twitter
+        : "";
+      this.setState({
+        handle: profile.handle,
+        company: profile.company,
+        website: profile.website,
+        location: profile.location,
+        status: profile.status,
+        industry: profile.industry,
+        skills: skills,
+        githubusername: profile.githubusername,
+        bio: profile.bio,
+        twitter: profile.twitter,
+        facebook: profile.facebook,
+        linkedin: profile.linkedin,
+        instagram: profile.instagram
+      });
     }
   }
 
@@ -111,8 +162,7 @@ class CreateProfile extends React.Component {
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
-              <h1 className="display-4 text-center">Create your profile</h1>
-              <p className="lead text-center">Get dome info for profile test</p>
+              <h1 className="display-4 text-center">Edit your profile</h1>
               <form onSubmit={this.onSubmit}>
                 <InputTextField
                   placeholder="* Profile Handle"
@@ -214,6 +264,8 @@ class CreateProfile extends React.Component {
 }
 
 CreateProfile.propTypes = {
+  createProfile: PropTypes.func.isRequired,
+  getCurrentProfile: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired
 };
@@ -225,5 +277,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { createProfile }
+  { createProfile, getCurrentProfile }
 )(withRouter(CreateProfile));

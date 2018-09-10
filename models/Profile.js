@@ -26,6 +26,10 @@ const profileSchema = new Schema({
     type: String,
     required: true
   },
+  industry: {
+    type: String,
+    required: true
+  },
   skills: {
     type: [String]
   },

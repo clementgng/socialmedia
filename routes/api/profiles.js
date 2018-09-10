@@ -117,6 +117,7 @@ router.post(
     if (req.body.location) profileFields.location = req.body.location;
     if (req.body.bio) profileFields.bio = req.body.bio;
     if (req.body.status) profileFields.status = req.body.status;
+    if (req.body.industry) profileFields.industry = req.body.industry;
     if (req.body.githubusername)
       profileFields.githubusername = req.body.githubusername;
     // Skills - split string into array input="X,Y,Z" output = [X,Y,Z]

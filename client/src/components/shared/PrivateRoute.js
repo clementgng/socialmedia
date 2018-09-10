@@ -1,3 +1,4 @@
+// PrivateRoute.js -- Redirect users without proper authentication back to the login page
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";

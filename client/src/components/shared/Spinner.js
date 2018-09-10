@@ -1,3 +1,4 @@
+// Displkay a spinner while pages are loading
 import React from "react";
 import spinner from "./spinner.gif";
 
