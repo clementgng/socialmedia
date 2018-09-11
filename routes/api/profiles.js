@@ -30,7 +30,6 @@ router.get(
       // grab these since findOne returns a promise which contains the user in req.user
       .populate("user", ["firstName", "lastName", "profilePicture"])
       .then(profile => {
-        console.log(req.user);
         if (!profile) {
           errors.noprofile = "There is no profile for this user";
           res.status(404).json(errors);
@@ -233,15 +232,13 @@ router.delete(
   "/experience/:exp_id",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
-    console.log(req.user);
+    console.log("in2");
     Profile.findOne({ user: req.user.id })
       .then(profile => {
-        console.log("in");
         const removeIndex = profile.experience
           .map(item => item.id)
           .indexOf(req.params.exp_id);
         profile.experience.splice(removeIndex, 1);
-        console.log(profile.experience);
         profile.save().then(profile => res.json(profile));
       })
       .catch(err => res.status(404).json(err));
@@ -255,7 +252,6 @@ router.delete(
   "/education/:edu_id",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
-    console.log(req.user);
     Profile.findOne({ user: req.user.id })
       .then(profile => {
         console.log("in");
@@ -263,7 +259,6 @@ router.delete(
           .map(item => item.id)
           .indexOf(req.params.edu_id);
         profile.education.splice(removeIndex, 1);
-        console.log(profile.education);
         profile.save().then(profile => res.json(profile));
       })
       .catch(err => res.status(404).json(err));

@@ -2,7 +2,7 @@
 
 import React from "react";
 import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import InputTextField from "../shared/InputTextField";
 import TextField from "../shared/TextField";
@@ -162,6 +162,9 @@ class CreateProfile extends React.Component {
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
+              <Link to="/dashboard" className="btn btn-light">
+                Go Back
+              </Link>
               <h1 className="display-4 text-center">Edit your profile</h1>
               <form onSubmit={this.onSubmit}>
                 <InputTextField
