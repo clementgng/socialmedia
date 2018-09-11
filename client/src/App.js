@@ -17,6 +17,7 @@ import CreateProfile from "./components/create-profile/CreateProfile";
 import EditProfile from "./components/edit-profile/EditProfile";
 import AddExperience from "./components/add-exp-edu/AddExperience";
 import AddEducation from "./components/add-exp-edu/AddEducation";
+import Listofprofiles from "./components/listofprofiles/Listofprofiles";
 
 import "./App.css";
 
@@ -59,6 +60,7 @@ class App extends Component {
             <div className="container">
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
+              <Route exact path="/profiles" component={Listofprofiles} />
               <Switch>
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
               </Switch>

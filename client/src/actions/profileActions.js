@@ -6,6 +6,7 @@ Getting, setting, creating, deleting current profiles, along with some other pro
 import axios from "axios";
 import {
   GET_PROFILE,
+  GET_PROFILES,
   PROFILE_LOADING,
   CLEAR_CURRENT_PROFILE,
   ERROR_HANDLER,
@@ -19,6 +20,15 @@ export const getCurrentProfile = () => dispatch => {
     .get("/api/profile")
     .then(res => dispatch({ type: GET_PROFILE, payload: res.data })) // return the profile object
     .catch(err => dispatch({ type: GET_PROFILE, payload: {} })); // return an empty object as users can register, but not create a profile
+};
+
+// Get all the profiles in the network
+export const getListOfProfiles = () => dispatch => {
+  dispatch(setProfileLoading());
+  axios
+    .get("/api/profile/users")
+    .then(res => dispatch({ type: GET_PROFILES, payload: res.data }))
+    .catch(err => dispatch({ type: ERROR_HANDLER, payload: null }));
 };
 
 // Create a new profile

@@ -47,7 +47,7 @@ router.post("/register", (req, res) => {
           password: req.body.password,
           // use this link as a default profile picture for now
           profilePicture:
-            "https://qph.fs.quoracdn.net/main-qimg-f879a085fc1d6803796ca9366cace73a.webp" //req.body.profilePicture
+            "https://utahvalley360.com/wp-content/uploads/2017/11/dwight-schrute.jpg" //req.body.profilePicture
         });
         // generate the hash for the password, set the new user's new password as the hash
         bcrypt.genSalt(10, (err, salt) => {
