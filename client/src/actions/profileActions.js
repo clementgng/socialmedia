@@ -22,6 +22,15 @@ export const getCurrentProfile = () => dispatch => {
     .catch(err => dispatch({ type: GET_PROFILE, payload: {} })); // return an empty object as users can register, but not create a profile
 };
 
+// Get profile by the handle
+export const getProfileByHandle = handle => dispatch => {
+  dispatch(setProfileLoading());
+  axios
+    .get(`/api/profile/handle/${handle}`)
+    .then(res => dispatch({ type: GET_PROFILE, payload: res.data })) // return the profile object
+    .catch(err => dispatch({ type: GET_PROFILE, payload: null })); // return an empty object as users can register, but not create a profile
+};
+
 // Get all the profiles in the network
 export const getListOfProfiles = () => dispatch => {
   dispatch(setProfileLoading());
