@@ -50,6 +50,11 @@ module.exports = function validateProfileInput(data) {
       errors.twitter = "Not a valid URL";
     }
   }
+  if (!isEmpty(data.githubusername)) {
+    if (!validator.isURL(data.githubusername)) {
+      errors.githubusername = "Not a valid URL";
+    }
+  }
 
   return {
     errors: errors,

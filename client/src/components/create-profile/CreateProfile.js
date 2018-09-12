@@ -103,6 +103,13 @@ class CreateProfile extends React.Component {
             onChange={this.onChange}
             error={errors.instagram}
           />
+          <InputField
+            placeholder="Github Username"
+            name="githubusername"
+            value={this.state.githubusername}
+            onChange={this.onChange}
+            error={errors.githubusername}
+          />
         </div>
       );
     }
@@ -170,14 +177,6 @@ class CreateProfile extends React.Component {
                   onChange={this.onChange}
                   error={errors.skills}
                   info="Please use comma seperated values (ex. Cooking,Eating,Cleaning)"
-                />
-                <InputTextField
-                  placeholder="Github Username"
-                  name="githubusername"
-                  value={this.state.githubusername}
-                  onChange={this.onChange}
-                  error={errors.githubusername}
-                  info="Specify your github username to show your latest repos"
                 />
                 <TextField
                   placeholder="Bio"

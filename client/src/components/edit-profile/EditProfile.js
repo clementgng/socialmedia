@@ -53,9 +53,6 @@ class CreateProfile extends React.Component {
       profile.company = !isEmpty(profile.company) ? profile.company : "";
       profile.website = !isEmpty(profile.website) ? profile.website : "";
       profile.location = !isEmpty(profile.location) ? profile.location : "";
-      profile.githubusername = !isEmpty(profile.githubusername)
-        ? profile.githubusername
-        : "";
       profile.bio = !isEmpty(profile.bio) ? profile.bio : "";
       profile.socialmedialinks = !isEmpty(profile.socialmedialinks)
         ? profile.socialmedialinks
@@ -65,6 +62,9 @@ class CreateProfile extends React.Component {
         : "";
       profile.linkedin = !isEmpty(profile.socialmedialinks.linkedin)
         ? profile.socialmedialinks.linkedin
+        : "";
+      profile.githubusername = !isEmpty(profile.socialmedialinks.githubusername)
+        ? profile.socialmedialinks.githubusername
         : "";
       profile.instagram = !isEmpty(profile.socialmedialinks.instagram)
         ? profile.socialmedialinks.instagram
@@ -154,6 +154,13 @@ class CreateProfile extends React.Component {
             onChange={this.onChange}
             error={errors.instagram}
           />
+          <InputField
+            placeholder="Github Username"
+            name="githubusername"
+            value={this.state.githubusername}
+            onChange={this.onChange}
+            error={errors.githubusername}
+          />
         </div>
       );
     }
@@ -223,14 +230,6 @@ class CreateProfile extends React.Component {
                   onChange={this.onChange}
                   error={errors.skills}
                   info="Please use comma seperated values (ex. Cooking,Eating,Cleaning)"
-                />
-                <InputTextField
-                  placeholder="Github Username"
-                  name="githubusername"
-                  value={this.state.githubusername}
-                  onChange={this.onChange}
-                  error={errors.githubusername}
-                  info="Specify your github username to show your latest repos"
                 />
                 <TextField
                   placeholder="Bio"

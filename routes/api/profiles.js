@@ -117,8 +117,6 @@ router.post(
     if (req.body.bio) profileFields.bio = req.body.bio;
     if (req.body.status) profileFields.status = req.body.status;
     if (req.body.industry) profileFields.industry = req.body.industry;
-    if (req.body.githubusername)
-      profileFields.githubusername = req.body.githubusername;
     // Skills - split string into array input="X,Y,Z" output = [X,Y,Z]
     if (typeof req.body.skills !== "undefined") {
       profileFields.skills = req.body.skills.split(",");
@@ -134,6 +132,8 @@ router.post(
       profileFields.socialmedialinks.instagram = req.body.instagram;
     if (req.body.twitter)
       profileFields.socialmedialinks.twitter = req.body.twitter;
+    if (req.body.githubusername)
+      profileFields.socialmedialinks.githubusername = req.body.githubusername;
 
     // Find the user profile, then decide whether to edit an existing or create a  new one
     Profile.findOne({ user: req.user.id }).then(profile => {
