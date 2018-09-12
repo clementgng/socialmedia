@@ -24,7 +24,7 @@ class Homepage extends React.Component {
                 <h1 className="display-3 mb-4">Linkedin TestApp</h1>
                 <p className="lead">
                   {" "}
-                  Create a profile, share posts and get help from other users
+                  Create a profile, share posts and interact with other users
                 </p>
                 <hr />
                 <Link to="/register" className="btn btn-lg btn-info mr-2">
