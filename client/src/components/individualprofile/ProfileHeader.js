@@ -52,7 +52,7 @@ class ProfileHeader extends React.Component {
                   >
                     <img
                       alt="twitter"
-                      src="https://seeklogo.com/images/T/twitter-2012-positive-logo-916EDF1309-seeklogo.com.png"
+                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTr_zJND6LWajttb5pjVmB-XFD2GPHYrtLnmSZ3MTSt5vNGGeMCaQ"
                       style={{ width: "50px", height: "50px" }}
                     />
                   </a>
@@ -95,6 +95,21 @@ class ProfileHeader extends React.Component {
                     <img
                       alt="instagram"
                       src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8am-JexrgXooBpwupowymwJduXNSpL4XAtpvR0eOWUpVjVSW8Pw"
+                      style={{ width: "50px", height: "50px" }}
+                    />
+                  </a>
+                )}
+                {isEmpty(
+                  profile.socialmedialinks &&
+                    profile.socialmedialinks.githubusername
+                ) ? null : (
+                  <a
+                    className="text-white p-2"
+                    href={profile.socialmedialinks.githubusername}
+                  >
+                    <img
+                      alt="githubusername"
+                      src="https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png"
                       style={{ width: "50px", height: "50px" }}
                     />
                   </a>

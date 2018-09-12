@@ -171,7 +171,7 @@ class CreateProfile extends React.Component {
                   info="Specify your location"
                 />
                 <InputTextField
-                  placeholder="* Skills"
+                  placeholder="Skills"
                   name="skills"
                   value={this.state.skills}
                   onChange={this.onChange}

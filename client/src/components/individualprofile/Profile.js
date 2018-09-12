@@ -33,8 +33,11 @@ class Profile extends React.Component {
             <div className="col-md-6" />
           </div>
           <ProfileHeader profile={profile} />
-          <ProfileAbout />
-          <ProfileExpEdu />
+          <ProfileAbout profile={profile} />
+          <ProfileExpEdu
+            experience={profile.experience}
+            education={profile.education}
+          />
         </div>
       );
     }
