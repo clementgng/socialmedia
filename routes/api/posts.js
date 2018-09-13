@@ -75,8 +75,6 @@ router.delete(
       Post.findById(req.params.post_id)
         .then(post => {
           // Check if this profile owns the post
-          console.log(post.user);
-          console.log(req.user.id);
           if (post.user.toString() !== req.user.id) {
             return res.status(401).json({
               unauthorized: "You are not authorized to delete this post!"
@@ -95,7 +93,7 @@ router.delete(
 );
 
 // @route POST api/posts/like/:post_id
-// @desc Like a specific post
+// @desc Toggle Like a specific post. Click to like. Click again to unlike
 // @access Private
 router.post(
   "/like/:post_id",
@@ -106,15 +104,19 @@ router.post(
         .then(post => {
           if (
             post.likes.filter(like => like.user.toString() === req.user.id)
-              .length > 0
+              .length === 0
           ) {
-            return res
-              .status(400)
-              .json({ post: "You have already liked this post!" });
+            // Add user id to the likes array in post
+            post.likes.push({ user: req.user.id });
+            post.save().then(post => res.json(post));
+          } else {
+            // Remove user id to the likes array in post
+            const idx = post.likes.findIndex(
+              like => like.user.toString() === req.user.id
+            );
+            post.likes.splice(idx, 1);
+            post.save().then(post => res.json(post));
           }
-          // Add user id to the likes array in post
-          post.likes.push({ user: req.user.id });
-          post.save().then(post => res.json(post));
         })
         .catch(err =>
           res
@@ -126,7 +128,7 @@ router.post(
 );
 
 // @route DELETE api/posts/unlike/:post_id
-// @desc Unlike a specific post
+// @desc Unlike a specific post. NO longer should be used, but keep here just incase
 // @access Private
 router.post(
   "/unlike/:post_id",
@@ -135,24 +137,20 @@ router.post(
     Profile.findOne({ user: req.user.id }).then(profile => {
       Post.findById(req.params.post_id)
         .then(post => {
-          console.log("in");
           if (
             post.likes.filter(like => like.user.toString() === req.user.id)
-              .length === 0
+              .length > 0
           ) {
-            return res.status(400).json({
+            // Remove user id to the likes array in post
+            const idx = post.likes.findIndex(
+              like => like.user.toString() === req.user.id
+            );
+            post.likes.splice(idx, 1);
+            post.save().then(post => res.json(post));
+            /*return res.status(400).json({
               post: "You cannot unlike a post which you have not liked"
-            });
+            });*/
           }
-          console.log("in2");
-          // Add user id to the likes array in post
-          console.log(post.likes);
-          console.log(req.user.id);
-          const idx = post.likes.findIndex(
-            like => like.user.toString() === req.user.id
-          );
-          post.likes.splice(idx, 1);
-          post.save().then(post => res.json(post));
         })
         .catch(err =>
           res

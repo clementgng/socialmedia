@@ -4,10 +4,16 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import classnames from "classnames";
+import { deletePost, likePost } from "../../actions/postActions";
 
 class PostItem extends React.Component {
   onDeleteClick(id) {
-    console.log(id);
+    this.props.deletePost(id);
+  }
+
+  //Toggle like button when clicking
+  onClick(id) {
+    this.props.likePost(id);
   }
 
   render() {
@@ -24,7 +30,6 @@ class PostItem extends React.Component {
       user,
       auth
     } = this.props;
-    console.log(key);
     return (
       <div className="card card-body mb-3">
         <div className="row">
@@ -43,13 +48,20 @@ class PostItem extends React.Component {
           </div>
           <div className="col-md-10">
             <p className="lead">{postContents}</p>
-            <button type="button" className="btn btn-light mr-1">
-              <i className="text-info fas fa-thumbs-up" />
+            <button
+              onClick={this.onClick.bind(this, id)}
+              type="button"
+              className="btn btn-light mr-1"
+            >
+              <img
+                src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/160/apple/129/thumbs-up-sign_1f44d.png"
+                style={{ width: "25px", height: "25px" }}
+              />
               <span className="badge badge-light">{likes.length}</span>
             </button>
-            <button type="button" className="btn btn-light mr-1">
+            {/*<button type="button" className="btn btn-light mr-1">
               <i className="text-secondary fas fa-thumbs-down" />
-            </button>
+    </button>*/}
             <Link to={`/post/${id}`} className="btn btn-info mr-1">
               Comments
             </Link>
@@ -59,7 +71,7 @@ class PostItem extends React.Component {
                 type="button"
                 className="btn btn-danger mr-1"
               >
-                <i className="fas fa-times" />
+                X
               </button>
             ) : null}
           </div>
@@ -70,12 +82,16 @@ class PostItem extends React.Component {
 }
 
 PostItem.propTypes = {
-  auth: PropTypes.object.isRequired,
-  post: PropTypes.object.isRequired
+  deletePost: PropTypes.func.isRequired,
+  likePost: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
   auth: state.auth
 });
 
-export default connect(mapStateToProps)(PostItem);
+export default connect(
+  mapStateToProps,
+  { deletePost, likePost }
+)(PostItem);
