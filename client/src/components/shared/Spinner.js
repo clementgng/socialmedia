@@ -1,4 +1,6 @@
-// Displkay a spinner while pages are loading
+/* Displkay a spinner while pages are loading
+ via dispatching actions and checking if a particular
+ component/feature is in the loading state*/
 import React from "react";
 import spinner from "./spinner.gif";
 

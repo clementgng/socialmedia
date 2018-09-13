@@ -126,7 +126,7 @@ class AddExperience extends React.Component {
                     Current Job
                   </label>
                 </div>
-                <InputTextField
+                <TextField
                   placeholder="Job Description"
                   name="description"
                   value={this.state.description}

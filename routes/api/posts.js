@@ -1,3 +1,10 @@
+/* routes/api/posts.js -- Backend API calls relating to a post
+getting a specific post, 
+getting all the posts
+getting/creating/deleting posts
+ability to comment or like posts
+*/
+
 const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
@@ -33,7 +40,7 @@ router.post(
       return res.status(400).json(errors);
     }
     const newPost = new Post({
-      text: req.body.text,
+      postContents: req.body.postContents,
       name: req.body.name,
       profilePicture: req.body.profilePicture,
       user: req.user.id
@@ -169,7 +176,7 @@ router.post(
     Post.findById(req.params.post_id)
       .then(post => {
         const newComment = {
-          text: req.body.text,
+          postContents: req.body.postContents,
           user: req.user.id,
           name: req.body.name,
           profilePicture: req.body.profilePicture
@@ -200,11 +207,9 @@ router.delete(
             comment => comment._id.toString() === req.params.comment_id
           ).length === 0
         ) {
-          return res
-            .status(404)
-            .json({
-              comment: "You cannot delete a comment that does not exist"
-            });
+          return res.status(404).json({
+            comment: "You cannot delete a comment that does not exist"
+          });
         }
         const idx = post.comments.findIndex(
           comment => comment._id.toString() === req.params.comment_id

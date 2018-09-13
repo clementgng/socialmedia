@@ -1,3 +1,4 @@
+// ProfileExpEdu.js -- Contains the user's summary and skills
 import React from "react";
 import PropTypes from "prop-types";
 import isEmpty from "../../validation/is-empty";

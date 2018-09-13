@@ -1,3 +1,4 @@
+// MongoDB post model using mongoose
 const mongoose = require("mongoose");
 mongoose.Promise = global.Promise;
 const Schema = mongoose.Schema;
@@ -8,7 +9,7 @@ const postSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "User"
   },
-  text: {
+  postContents: {
     type: String,
     required: true
   },
@@ -47,7 +48,11 @@ const postSchema = new Schema({
         default: Date.now
       }
     }
-  ]
+  ],
+  date: {
+    type: Date,
+    default: Date.now
+  }
 });
 
 module.exports = Post = mongoose.model("Post", postSchema);

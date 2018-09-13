@@ -1,3 +1,6 @@
+/* routes/api/users.js -- Backend API calls which involve the user
+such as registering a user, logging in as a user, geting a user based off their authentication token
+*/
 const express = require("express");
 const bcrypt = require("bcryptjs");
 const passport = require("passport");
@@ -45,7 +48,7 @@ router.post("/register", (req, res) => {
           lastName: req.body.lastName,
           email: req.body.email,
           password: req.body.password,
-          // use this link as a default profile picture for now
+          // use this picture of dwight schrute as a default profile picture for now
           profilePicture:
             "https://utahvalley360.com/wp-content/uploads/2017/11/dwight-schrute.jpg" //req.body.profilePicture
         });

@@ -1,3 +1,10 @@
+/* routes/api/profiles.js -- Backend API calls relating to a profile
+getting a user profile by handle, id, 
+getting all the user profiles
+getting/creating/editing/deleting the users' own profile
+adding/deleting things such as a user's experience or education from their profile
+*/
+
 const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");

@@ -1,3 +1,6 @@
+/* ProfileExpEdu.js -- Contains the user's work experience
+and education listed from most recent user submitted experience/education
+*/
 import React from "react";
 import Moment from "react-moment";
 

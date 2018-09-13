@@ -1,3 +1,5 @@
+// MongoDB user model using mongoose
+
 const mongoose = require("mongoose");
 
 mongoose.Promise = global.Promise;

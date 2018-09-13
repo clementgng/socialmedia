@@ -40,7 +40,6 @@ class Dashboard extends React.Component {
           </div>
         );
       } else {
-        //TODO: display user profile here
         dashboardContent = (
           <h1>
             <p>
@@ -48,7 +47,6 @@ class Dashboard extends React.Component {
               <Link to={`/profile/${profile.handle}`}>{user.firstName}</Link> !
             </p>
             <ProfileActions />
-            {/*TODO: add experience and education*/}
             <Experience experience={profile.experience} />
             <Education education={profile.education} />
             <div style={{ marginBottom: "80px" }} />

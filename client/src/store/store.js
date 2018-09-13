@@ -1,3 +1,7 @@
+/* store/store.js -- 
+Create the store, apply thunk middleware, 
+create rootReducer to take the sub reducer
+*/
 import { createStore, applyMiddleware, compose } from "redux";
 import rootReducer from "../reducers/rootreducer";
 import thunk from "redux-thunk";

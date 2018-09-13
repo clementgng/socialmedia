@@ -1,3 +1,7 @@
+/* validation/is-empty.js -- 
+Validation for checking empty objects or string. 
+There is a similar function for the frontend as well
+*/
 const isEmpty = value => {
   return (
     value === undefined ||

@@ -126,7 +126,7 @@ class AddEducation extends React.Component {
                     Currently attending
                   </label>
                 </div>
-                <InputTextField
+                <TextField
                   placeholder="Education Description"
                   name="description"
                   value={this.state.description}

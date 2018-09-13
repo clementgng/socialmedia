@@ -1,3 +1,5 @@
+// server.js -- top level file which uses express, mongodb, express middleware for backend API calls for the web app
+
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");

@@ -1,3 +1,4 @@
+// validation/education.js -- Validation for adding a user's education to their profile
 const validator = require("validator");
 const isEmpty = require("./is-empty");
 

@@ -1,3 +1,4 @@
+// validation/register.js -- Validation for registration form
 const validator = require("validator");
 const isEmpty = require("./is-empty");
 

@@ -1,3 +1,4 @@
+// validation/experience.js -- Validation for adding a user's experience to their profile
 const validator = require("validator");
 const isEmpty = require("./is-empty");
 

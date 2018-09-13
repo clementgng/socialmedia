@@ -4,9 +4,6 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
-// use Link <Link></Link>to replace <a></a> tag
-// <a href="[link goes here]" changes to <Link to="[link goes here]"
-
 class Homepage extends React.Component {
   componentDidMount() {
     if (this.props.auth.isAuthenticated) {

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Navbar from "./components/layout/Navbar";
+import Navigation from "./components/layout/Navigation";
 import Footer from "./components/layout/Footer";
 import Homepage from "./components/layout/Homepage";
 import Login from "./components/auth/Login";
@@ -19,6 +19,8 @@ import AddExperience from "./components/add-exp-edu/AddExperience";
 import AddEducation from "./components/add-exp-edu/AddEducation";
 import Listofprofiles from "./components/listofprofiles/Listofprofiles";
 import Profile from "./components/individualprofile/Profile";
+import NotFound from "./components/notfound/NotFound";
+import Posts from "./components/posts/Posts";
 
 import "./App.css";
 
@@ -47,8 +49,7 @@ if (localStorage.jwtToken) {
 // Use Route to assign a component to a specific route
 // <Route exact path =[/path/goes/here] component={[component name goes here]}
 
-// Create the store, apply thunk middleware, create rootReducer to take the sub reducers
-// Use switch for redirection
+// Used switch for redirection for protected routes we don't want public accessing
 
 class App extends Component {
   render() {
@@ -56,7 +57,7 @@ class App extends Component {
       <Provider store={store}>
         <Router>
           <div className="App">
-            <Navbar />
+            <Navigation />
             <Route exact path="/" component={Homepage} />
             <div className="container">
               <Route exact path="/register" component={Register} />
@@ -94,6 +95,10 @@ class App extends Component {
                   component={AddEducation}
                 />
               </Switch>
+              <Switch>
+                <PrivateRoute exact path="/postfeed" component={Posts} />
+              </Switch>
+              <Route exact path="/notfound" component={NotFound} />
             </div>
             <Footer />
           </div>

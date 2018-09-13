@@ -19,7 +19,9 @@ class Register extends React.Component {
     };
     // dont need .bind() if using arrow function
     // this.onChange = this.onChange.bind(this);
-    //this.onSubmit = this.onSubmit.bind(this);
+    // this.onSubmit = this.onSubmit.bind(this);
+    // might be better to use bind for less code(?)
+    // performance should stil lbe same as need to rerender on event change
   }
 
   componentDidMount() {
@@ -88,10 +90,6 @@ class Register extends React.Component {
                   error={errors.email}
                   info="This is a test for email"
                 />
-                {/* <small className="form-text text-muted">
-                    This site uses Gravatar so if you want a profile image, use
-                    a Gravatar email
-                </small> */}
                 <InputTextField
                   type="password"
                   placeholder="Password"

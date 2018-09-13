@@ -1,22 +1,21 @@
-// Navigation UI at the top of the page with links to do stuff
+// Navigation.js --  UI at the top of the page with links to do stuff
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import { clearCurrentProfile } from "../../actions/profileActions";
 import PropTypes from "prop-types";
 
-// use Link <Link></Link>to replace <a></a> tag
-// <a href="[link goes here]" changes to <Link to="[link goes here]"
+//Navigation bar at the top
 
-class Navbar extends React.Component {
+class Navigation extends React.Component {
   /*constructor() {
     super();
   }*/
   onLogoutClick = event => {
     event.preventDefault();
     this.props.clearCurrentProfile();
-    this.props.logoutUser();
+    this.props.logoutUser(this.props.history);
   };
 
   render() {
@@ -24,17 +23,21 @@ class Navbar extends React.Component {
     const loggedIn = (
       <ul className="navbar-nav ml-auto">
         <li className="nav-item">
+          <Link className="nav-link" to="/postfeed">
+            Post Feed
+          </Link>
+        </li>
+        <li className="nav-item">
           <Link className="nav-link" to="/dashboard">
             Dashboard
           </Link>
-          <a href="" className="nav-link" onClick={this.onLogoutClick}>
-            <img
-              className="rounded-circle"
-              src={user.profilePicture}
-              alt={user.firstName}
-              title="Test title"
-              style={{ width: "25px", marginRight: "5px" }}
-            />{" "}
+        </li>
+        <li className="nav-item">
+          <a
+            href=""
+            onClick={this.onLogoutClick.bind(this)}
+            className="nav-link"
+          >
             Logout
           </a>
         </li>
@@ -78,7 +81,6 @@ class Navbar extends React.Component {
                 </Link>
               </li>
             </ul>
-
             {isAuthenticated ? loggedIn : loggedOut}
           </div>
         </div>
@@ -87,7 +89,7 @@ class Navbar extends React.Component {
   }
 }
 
-Navbar.propTypes = {
+Navigation.propTypes = {
   logoutUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired
 };
@@ -99,4 +101,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { clearCurrentProfile, logoutUser }
-)(Navbar);
+)(withRouter(Navigation));

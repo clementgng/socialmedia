@@ -1,3 +1,6 @@
+/* utls/setAuthToken.js -- apply or delete the Authorization request when we call
+axios so backend knows if a user is authorized*/
+
 import axios from "axios";
 
 const setAuthToken = token => {

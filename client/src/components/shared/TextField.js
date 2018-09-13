@@ -1,5 +1,5 @@
-/* This file is a text form field for things which are not inputs
-such as creating the user profile */
+/* This file is a text area form field for text forms which can be large such
+as a user summary or a post */
 
 import React from "react";
 import classnames from "classnames";

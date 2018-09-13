@@ -1,3 +1,5 @@
+// individualprofile/Profile.js -- Contains a individual user's profile when selected
+// Don't show empty boxes on frontend client if profile attributes are empty
 import React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
@@ -7,11 +9,18 @@ import ProfileExpEdu from "./ProfileExpEdu";
 import ProfileHeader from "./ProfileHeader";
 import Spinner from "../shared/Spinner";
 import { getProfileByHandle } from "../../actions/profileActions";
+import isEmpty from "../../validation/is-empty";
 
 class Profile extends React.Component {
   componentDidMount() {
     if (this.props.match.params.handle) {
       this.props.getProfileByHandle(this.props.match.params.handle);
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.profile.profile === null && this.props.profile.loading) {
+      this.props.history.push("/notfound");
     }
   }
 
@@ -33,7 +42,10 @@ class Profile extends React.Component {
             <div className="col-md-6" />
           </div>
           <ProfileHeader profile={profile} />
-          <ProfileAbout profile={profile} />
+          {isEmpty(profile.bio) && isEmpty(profile.skills) ? null : (
+            <ProfileAbout profile={profile} />
+          )}
+
           <ProfileExpEdu
             experience={profile.experience}
             education={profile.education}

@@ -1,3 +1,4 @@
+// validation/profile.js -- Validation for creating/editing a user's profile
 const validator = require("validator");
 const isEmpty = require("./is-empty");
 

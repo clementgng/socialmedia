@@ -1,4 +1,4 @@
-// Experience.js -- Display the user's experience on the dashboard
+// Experience.js -- Display the user's experience on the dashboard with ability to delete a specific experience
 import React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";

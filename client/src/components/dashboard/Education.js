@@ -1,4 +1,4 @@
-// Education.js -- Display the user's Education on the dashboard
+// Education.js -- Display the user's Education on the dashboard with ability to delete a specific education
 import React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";

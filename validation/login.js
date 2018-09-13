@@ -1,3 +1,4 @@
+// validation/login.js -- Validation for login form
 const validator = require("validator");
 const isEmpty = require("./is-empty");
 

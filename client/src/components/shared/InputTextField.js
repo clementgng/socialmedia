@@ -9,7 +9,6 @@ const InputTextField = ({
   name,
   placeholder,
   value,
-  label,
   error,
   info,
   type,
