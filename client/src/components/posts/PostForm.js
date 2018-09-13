@@ -1,3 +1,5 @@
+// PostForm.js -- Input form to write a post
+
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
@@ -41,7 +43,7 @@ class PostForm extends React.Component {
     return (
       <div className="post-form mb-3">
         <div className="card card-info">
-          <div className="card-header bg-info text-white">Say Somthing...</div>
+          <div className="card-header bg-info text-white">Post Anything!</div>
           <div className="card-body">
             <form onSubmit={this.onSubmit}>
               <div className="form-group">
@@ -54,7 +56,7 @@ class PostForm extends React.Component {
                 />
               </div>
               <button type="submit" className="btn btn-dark">
-                Submit
+                Post
               </button>
             </form>
           </div>

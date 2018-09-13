@@ -41,7 +41,8 @@ router.post(
     }
     const newPost = new Post({
       postContents: req.body.postContents,
-      name: req.body.name,
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
       profilePicture: req.body.profilePicture,
       user: req.user.id
     });
@@ -178,7 +179,8 @@ router.post(
         const newComment = {
           postContents: req.body.postContents,
           user: req.user.id,
-          name: req.body.name,
+          firstName: req.body.firstName,
+          lastName: req.body.lastName,
           profilePicture: req.body.profilePicture
         };
         // Add to the comment array in Post object

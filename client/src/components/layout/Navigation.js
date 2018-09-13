@@ -19,7 +19,7 @@ class Navigation extends React.Component {
   };
 
   render() {
-    const { isAuthenticated, user } = this.props.auth;
+    const { isAuthenticated } = this.props.auth;
     const loggedIn = (
       <ul className="navbar-nav ml-auto">
         <li className="nav-item">

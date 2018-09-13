@@ -13,7 +13,10 @@ const postSchema = new Schema({
     type: String,
     required: true
   },
-  name: {
+  firstName: {
+    type: String
+  },
+  lastName: {
     type: String
   },
   profilePicture: {
@@ -37,7 +40,10 @@ const postSchema = new Schema({
         type: String,
         required: true
       },
-      name: {
+      firstName: {
+        type: String
+      },
+      lastName: {
         type: String
       },
       profilePicture: {
