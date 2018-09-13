@@ -16,6 +16,7 @@ class PostItem extends React.Component {
     this.props.likePost(id);
   }
 
+  // Check if a user liked a specific post to change color
   userLiked(likes) {
     const { auth } = this.props;
     if (likes.filter(like => like.user === auth.user.id).length > 0) {
@@ -26,19 +27,7 @@ class PostItem extends React.Component {
   }
 
   render() {
-    const {
-      key,
-      id,
-      comments,
-      date,
-      firstName,
-      lastName,
-      likes,
-      postContents,
-      profilePicture,
-      user,
-      auth
-    } = this.props;
+    const { post, auth } = this.props;
     return (
       <div className="card card-body mb-3">
         <div className="row">
@@ -46,23 +35,23 @@ class PostItem extends React.Component {
             <a href="profile.html">
               <img
                 className="rounded-circle d-none d-md-block"
-                src={profilePicture}
+                src={post.profilePicture}
                 alt=""
               />
             </a>
             <br />
             <p className="text-center">
-              {firstName} {lastName}
+              {post.firstName} {post.lastName}
             </p>
           </div>
           <div className="col-md-10">
-            <p className="lead">{postContents}</p>
+            <p className="lead">{post.postContents}</p>
             <button
-              onClick={this.onClick.bind(this, id)}
+              onClick={this.onClick.bind(this, post._id)}
               type="button"
               className="btn btn-light mr-1"
             >
-              {this.userLiked(likes) ? (
+              {this.userLiked(post.likes) ? (
                 <img
                   src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/160/facebook/11/thumbs-up-sign_1f44d.png"
                   style={{ width: "25px", height: "25px" }}
@@ -74,17 +63,14 @@ class PostItem extends React.Component {
                 />
               )}
 
-              <span className="badge badge-light">{likes.length}</span>
+              <span className="badge badge-light">{post.likes.length}</span>
             </button>
-            {/*<button type="button" className="btn btn-light mr-1">
-              <i className="text-secondary fas fa-thumbs-down" />
-    </button>*/}
-            <Link to={`/post/${id}`} className="btn btn-info mr-1">
+            <Link to={`/post/${post._id}`} className="btn btn-info mr-1">
               Comments
             </Link>
-            {user === auth.user.id ? (
+            {post.user === auth.user.id ? (
               <button
-                onClick={this.onDeleteClick.bind(this, id)}
+                onClick={this.onDeleteClick.bind(this, post._id)}
                 type="button"
                 className="btn btn-danger mr-1"
               >
