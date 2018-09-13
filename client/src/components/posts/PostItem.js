@@ -16,6 +16,15 @@ class PostItem extends React.Component {
     this.props.likePost(id);
   }
 
+  userLiked(likes) {
+    const { auth } = this.props;
+    if (likes.filter(like => like.user === auth.user.id).length > 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   render() {
     const {
       key,
@@ -53,10 +62,18 @@ class PostItem extends React.Component {
               type="button"
               className="btn btn-light mr-1"
             >
-              <img
-                src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/160/apple/129/thumbs-up-sign_1f44d.png"
-                style={{ width: "25px", height: "25px" }}
-              />
+              {this.userLiked(likes) ? (
+                <img
+                  src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/160/facebook/11/thumbs-up-sign_1f44d.png"
+                  style={{ width: "25px", height: "25px" }}
+                />
+              ) : (
+                <img
+                  src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/160/apple/129/thumbs-up-sign_1f44d.png"
+                  style={{ width: "25px", height: "25px" }}
+                />
+              )}
+
               <span className="badge badge-light">{likes.length}</span>
             </button>
             {/*<button type="button" className="btn btn-light mr-1">
