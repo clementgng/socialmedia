@@ -3,6 +3,8 @@ This is a simple social media web app where people can register, create a profil
 TODO in future when I have time:
 Add edit button for editing a user's experience or education
 
-Create post/comment feature
+Create comment on posts feature
 
 Create upload profile picture feature
+
+Create a forgot password feature
