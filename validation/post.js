@@ -8,12 +8,12 @@ module.exports = function validatePostInput(data) {
   // Validate and Check the required fields for the profile: Handle, status
   data.postContents = !isEmpty(data.postContents) ? data.postContents : "";
 
-  if (!validator.isLength(data.postContents, { min: 1, max: 300 })) {
-    errors.postContents = "Posts can have up to 300 characters";
+  if (!validator.isLength(data.postContents, { min: 1 })) {
+    errors.postContents = "Please submit more than 1 character";
   }
 
   if (validator.isEmpty(data.postContents)) {
-    errors.postContents = "Please write some text to submit a post";
+    errors.postContents = "we need something here";
   }
 
   return {

@@ -27,18 +27,18 @@ class PostItem extends React.Component {
   }
 
   render() {
-    const { post, auth } = this.props;
+    const { post, auth, displayButtons } = this.props;
     return (
       <div className="card card-body mb-3">
         <div className="row">
           <div className="col-md-2">
-            <a href="profile.html">
+            <Link to={`/profile/user/${post.user}`}>
               <img
                 className="rounded-circle d-none d-md-block"
                 src={post.profilePicture}
                 alt=""
               />
-            </a>
+            </Link>
             <br />
             <p className="text-center">
               {post.firstName} {post.lastName}
@@ -46,36 +46,40 @@ class PostItem extends React.Component {
           </div>
           <div className="col-md-10">
             <p className="lead">{post.postContents}</p>
-            <button
-              onClick={this.onClick.bind(this, post._id)}
-              type="button"
-              className="btn btn-light mr-1"
-            >
-              {this.userLiked(post.likes) ? (
-                <img
-                  src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/160/facebook/11/thumbs-up-sign_1f44d.png"
-                  style={{ width: "25px", height: "25px" }}
-                />
-              ) : (
-                <img
-                  src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/160/apple/129/thumbs-up-sign_1f44d.png"
-                  style={{ width: "25px", height: "25px" }}
-                />
-              )}
+            {displayButtons ? (
+              <span>
+                <button
+                  onClick={this.onClick.bind(this, post._id)}
+                  type="button"
+                  className="btn btn-light mr-1"
+                >
+                  {this.userLiked(post.likes) ? (
+                    <img
+                      src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/160/facebook/11/thumbs-up-sign_1f44d.png"
+                      style={{ width: "25px", height: "25px" }}
+                    />
+                  ) : (
+                    <img
+                      src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/160/apple/129/thumbs-up-sign_1f44d.png"
+                      style={{ width: "25px", height: "25px" }}
+                    />
+                  )}
 
-              <span className="badge badge-light">{post.likes.length}</span>
-            </button>
-            <Link to={`/post/${post._id}`} className="btn btn-info mr-1">
-              Comments
-            </Link>
-            {post.user === auth.user.id ? (
-              <button
-                onClick={this.onDeleteClick.bind(this, post._id)}
-                type="button"
-                className="btn btn-danger mr-1"
-              >
-                X
-              </button>
+                  <span className="badge badge-light">{post.likes.length}</span>
+                </button>
+                <Link to={`/post/${post._id}`} className="btn btn-info mr-1">
+                  Comments
+                </Link>
+                {post.user === auth.user.id ? (
+                  <button
+                    onClick={this.onDeleteClick.bind(this, post._id)}
+                    type="button"
+                    className="btn btn-danger mr-1"
+                  >
+                    X
+                  </button>
+                ) : null}
+              </span>
             ) : null}
           </div>
         </div>
@@ -83,6 +87,10 @@ class PostItem extends React.Component {
     );
   }
 }
+
+PostItem.defaultProps = {
+  displayButtons: true
+};
 
 PostItem.propTypes = {
   deletePost: PropTypes.func.isRequired,

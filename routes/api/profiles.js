@@ -65,7 +65,7 @@ router.get("/handle/:handle", (req, res) => {
     .catch(err => res.status(404).json(err));
 });
 
-// @route GET api/profile/id/:id
+// @route GET api/profile/user/:id
 // @desc Get the profile of the id
 // @access Public
 // /:[name goes here] goes under to req.params.[name goes here]

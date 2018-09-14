@@ -5,6 +5,7 @@ import {
   ERROR_HANDLER,
   ADD_POST,
   GET_POSTS,
+  GET_POST,
   POST_LOADING,
   DELETE_POST
 } from "../actions/constants";
@@ -26,6 +27,12 @@ export const postReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         posts: action.payload,
+        loading: false
+      };
+    case GET_POST:
+      return {
+        ...state,
+        post: action.payload,
         loading: false
       };
     case ADD_POST:
