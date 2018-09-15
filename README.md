@@ -1,6 +1,10 @@
 This is a simple social media web app where people can register, create a profile, submit posts and comments for others to see
 
+At the moment, every user's profile picture is a picture of Rainn Wilson as Dwight Schrute from the American TV show, The Office
+
 TODO in future when I have time:
+Fix any bugs I find while playing around with the web app
+
 Add edit button for editing a user's experience or education
 
 Create like a comment feature
@@ -8,3 +12,5 @@ Create like a comment feature
 Create upload profile picture feature
 
 Create a forgot password feature
+
+In comments section of a post, add ability to go to a user's profile when clicking on their picture
