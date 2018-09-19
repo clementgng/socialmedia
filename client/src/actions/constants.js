@@ -1,4 +1,4 @@
-// constant types used for switch statements in actions
+// constant types used for switch statements in actions!
 
 // Error handler
 export const ERROR_HANDLER = "ERROR_HANDLER";

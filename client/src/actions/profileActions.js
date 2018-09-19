@@ -116,6 +116,7 @@ export const deleteAccount = () => dispatch => {
   }
 };
 
+// Upload a profile picture for the user
 export const uploadPicture = imgFile => dispatch => {
   axios
     .post("/api/profile/profilePicture", imgFile)

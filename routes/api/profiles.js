@@ -288,7 +288,7 @@ router.delete(
 );
 
 // @route POST api/profile/profilePicture
-// @desc Upload profile picture for the current user based off JWT token we sent
+// @desc Upload profile picture for the current user based off JWT token we sent!
 // @access Private
 router.post(
   "/profilePicture",

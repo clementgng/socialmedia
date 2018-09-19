@@ -125,6 +125,7 @@ class CreateProfile extends React.Component {
     }));
   };
 
+  // upload picture
   onPicture = event => {
     event.preventDefault();
     this.setState({ profilePicture: event.target.files[0] });

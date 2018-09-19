@@ -39,7 +39,7 @@ export const profileReducer = (state = initialState, action = {}) => {
       };
     case UPLOAD_IMAGE:
       return {
-        image: action.payload
+        imgFile: action.payload
       };
     default:
       return state;
