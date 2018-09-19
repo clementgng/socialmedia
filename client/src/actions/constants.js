@@ -12,6 +12,7 @@ export const GET_PROFILES = "GET_PROFILES";
 export const PROFILE_LOADING = "PROFILE_LOADING";
 export const PROFILE_NOT_FOUND = "PROFILE_NOT_FOUND";
 export const CLEAR_CURRENT_PROFILE = "CLEAR_CURRENT_PROFILE";
+export const UPLOAD_IMAGE = "UPLOAD_IMAGE";
 
 // Posts/Comments
 export const GET_POST = "GET_POST";

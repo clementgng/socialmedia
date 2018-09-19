@@ -287,4 +287,33 @@ router.delete(
   }
 );
 
+// @route POST api/profile/profilePicture
+// @desc Upload profile picture for the current user based off JWT token we sent
+// @access Private
+router.post(
+  "/profilePicture",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    Profile.findOne({ user: req.user.id }).then(() => {
+      User.findOne({ _id: req.user.id }).then(user => {
+        // update profile
+        const userData = {
+          firstName: req.user.firstName,
+          lastName: req.user.lastName,
+          email: req.user.email,
+          password: req.user.password
+        };
+        console.log("body2", req.body.imgFile);
+        if (user) {
+          User.findOneAndUpdate(
+            { profilePicture: req.body.imgFile },
+            { $set: userData },
+            { new: true }
+          ).then(user => res.json(user));
+        }
+      });
+    });
+  }
+);
+
 module.exports = router;

@@ -2,12 +2,14 @@ import {
   GET_PROFILE,
   GET_PROFILES,
   PROFILE_LOADING,
-  CLEAR_CURRENT_PROFILE
+  CLEAR_CURRENT_PROFILE,
+  UPLOAD_IMAGE
 } from "../actions/constants";
 
 const initialState = {
   profile: null,
   profiles: null,
+  imgFile: null,
   loading: false
 };
 
@@ -34,6 +36,10 @@ export const profileReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         profile: null
+      };
+    case UPLOAD_IMAGE:
+      return {
+        image: action.payload
       };
     default:
       return state;

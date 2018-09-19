@@ -10,7 +10,8 @@ import {
   PROFILE_LOADING,
   CLEAR_CURRENT_PROFILE,
   ERROR_HANDLER,
-  SET_CURRENT_USER
+  SET_CURRENT_USER,
+  UPLOAD_IMAGE
 } from "./constants";
 
 // Get current profile
@@ -42,6 +43,7 @@ export const getListOfProfiles = () => dispatch => {
 
 // Create a new profile
 export const createProfile = (profileData, history) => dispatch => {
+  console.log(profileData);
   axios
     .post("/api/profile", profileData)
     .then(res => history.push("/dashboard"))
@@ -112,6 +114,17 @@ export const deleteAccount = () => dispatch => {
         })
       );
   }
+};
+
+export const uploadPicture = imgFile => dispatch => {
+  axios
+    .post("/api/profile/profilePicture", imgFile)
+    .then(res => {
+      dispatch({ type: UPLOAD_IMAGE, payload: res.data });
+    })
+    .catch(err => {
+      console.log("bad");
+    });
 };
 
 // Set profile loading

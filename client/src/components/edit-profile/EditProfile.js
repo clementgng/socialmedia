@@ -9,7 +9,11 @@ import TextField from "../shared/TextField";
 import SelectList from "../shared/SelectList";
 import InputField from "../shared/InputField";
 import industryOptions from "../shared/industryOptions";
-import { createProfile, getCurrentProfile } from "../../actions/profileActions";
+import {
+  createProfile,
+  getCurrentProfile,
+  uploadPicture
+} from "../../actions/profileActions";
 import isEmpty from "../../validation/is-empty";
 
 class CreateProfile extends React.Component {
@@ -30,6 +34,7 @@ class CreateProfile extends React.Component {
       facebook: "",
       linkedin: "",
       instagram: "",
+      profilePicture: null,
       errors: {}
     };
   }
@@ -118,6 +123,14 @@ class CreateProfile extends React.Component {
     this.setState(state => ({
       displaySocialInputs: !state.displaySocialInputs
     }));
+  };
+
+  onPicture = event => {
+    event.preventDefault();
+    this.setState({ profilePicture: event.target.files[0] });
+    const img = { imgFile: event.target.files[0] };
+    console.log(img);
+    this.props.uploadPicture(img);
   };
   //icon="fab fa-twitter"
   render() {
@@ -239,6 +252,17 @@ class CreateProfile extends React.Component {
                   error={errors.bio}
                   info="Tell us a little about yourself"
                 />
+                <div>
+                  <input
+                    style={{ display: "none" }}
+                    type="file"
+                    onChange={this.onPicture}
+                    ref={imgFile => (this.imgFile = imgFile)}
+                  />
+                  <button type="button" onClick={() => this.imgFile.click()}>
+                    Choose a Profile Picture
+                  </button>
+                </div>
                 <div className="mb-3">
                   <button
                     type="button"
@@ -268,6 +292,7 @@ class CreateProfile extends React.Component {
 CreateProfile.propTypes = {
   createProfile: PropTypes.func.isRequired,
   getCurrentProfile: PropTypes.func.isRequired,
+  uploadPicture: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired
 };
@@ -279,5 +304,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { createProfile, getCurrentProfile }
+  { createProfile, getCurrentProfile, uploadPicture }
 )(withRouter(CreateProfile));
