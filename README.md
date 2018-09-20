@@ -1,5 +1,10 @@
 This is a simple social media web app where people can register, create a profile, submit posts and comments for others to see
 
+Heroku:
+https://hidden-crag-14438.herokuapp.com/
+
+I would recommend using my heroku deploy as this git repo has edits as I work on the app in my free time aside from work and online courses
+
 #Install npm packages for the backend server
 npm install
 
