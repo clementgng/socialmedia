@@ -3,7 +3,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import Spinner from "../shared/Spinner";
 import TextField from "../shared/TextField";
 import { addPost } from "../../actions/postActions";
 

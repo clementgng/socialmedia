@@ -61,9 +61,7 @@ class Register extends React.Component {
           <div className="row">
             <div className="col-md-8 m-auto">
               <h1 className="display-4 text-center">Sign Up</h1>
-              <p className="lead text-center">
-                Create your DevConnector account
-              </p>
+              <p className="lead text-center">Create your account</p>
               <form noValidate onSubmit={this.onSubmit}>
                 <InputTextField
                   type="text"
@@ -88,7 +86,6 @@ class Register extends React.Component {
                   value={this.state.email}
                   onChange={this.onChange}
                   error={errors.email}
-                  info="This is a test for email"
                 />
                 <InputTextField
                   type="password"

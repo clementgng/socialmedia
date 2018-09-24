@@ -10,6 +10,7 @@ module.exports = function validateEducationInput(data) {
   data.degree = !isEmpty(data.degree) ? data.degree : "";
   data.major = !isEmpty(data.major) ? data.major : "";
   data.from = !isEmpty(data.from) ? data.from : "";
+  data.to = !isEmpty(data.to) ? data.to : "";
 
   if (validator.isEmpty(data.school)) {
     errors.school = "School is required";
@@ -22,6 +23,9 @@ module.exports = function validateEducationInput(data) {
   }
   if (validator.isEmpty(data.from)) {
     errors.from = "Start date is required";
+  }
+  if (validator.isEmpty(data.to) && data.current == false) {
+    errors.to = "Select an end date or check Currently attending";
   }
 
   return {

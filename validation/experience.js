@@ -9,6 +9,7 @@ module.exports = function validateExperienceInput(data) {
   data.title = !isEmpty(data.title) ? data.title : "";
   data.company = !isEmpty(data.company) ? data.company : "";
   data.from = !isEmpty(data.from) ? data.from : "";
+  data.to = !isEmpty(data.to) ? data.to : "";
 
   if (validator.isEmpty(data.title)) {
     errors.title = "Job title is required";
@@ -18,6 +19,9 @@ module.exports = function validateExperienceInput(data) {
   }
   if (validator.isEmpty(data.from)) {
     errors.from = "Start date is required";
+  }
+  if (validator.isEmpty(data.to) && data.current == false) {
+    errors.to = "Select an end date or check Current Job";
   }
 
   return {

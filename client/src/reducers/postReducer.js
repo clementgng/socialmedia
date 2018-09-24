@@ -2,7 +2,6 @@
 postReducer.js -- 
 */
 import {
-  ERROR_HANDLER,
   ADD_POST,
   GET_POSTS,
   GET_POST,

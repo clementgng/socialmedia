@@ -43,7 +43,7 @@ class ProfileExpEdu extends React.Component {
         <h4>{edu.school}</h4>
         <p>
           <Moment format="MM/DD/YYYY">{edu.from}</Moment> -
-          {edu.to === null ? (
+          {edu.current === true ? (
             " Present"
           ) : (
             <Moment format="MM/DD/YYYY">{edu.to}</Moment>

@@ -253,7 +253,7 @@ class CreateProfile extends React.Component {
                   error={errors.bio}
                   info="Tell us a little about yourself"
                 />
-                <div>
+                {/*<div>
                   <input
                     style={{ display: "none" }}
                     type="file"
@@ -263,7 +263,7 @@ class CreateProfile extends React.Component {
                   <button type="button" onClick={() => this.imgFile.click()}>
                     Choose a Profile Picture
                   </button>
-                </div>
+                </div>*/}
                 <div className="mb-3">
                   <button
                     type="button"

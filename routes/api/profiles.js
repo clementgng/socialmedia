@@ -239,7 +239,6 @@ router.delete(
   "/experience/:exp_id",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
-    console.log("in2");
     Profile.findOne({ user: req.user.id })
       .then(profile => {
         const removeIndex = profile.experience
@@ -261,7 +260,6 @@ router.delete(
   (req, res) => {
     Profile.findOne({ user: req.user.id })
       .then(profile => {
-        console.log("in");
         const removeIndex = profile.education
           .map(item => item.id)
           .indexOf(req.params.edu_id);

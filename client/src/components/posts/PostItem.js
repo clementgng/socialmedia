@@ -3,7 +3,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import classnames from "classnames";
 import { deletePost, likePost } from "../../actions/postActions";
 
 class PostItem extends React.Component {
@@ -55,11 +54,13 @@ class PostItem extends React.Component {
                 >
                   {this.userLiked(post.likes) ? (
                     <img
+                      alt=""
                       src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/160/facebook/11/thumbs-up-sign_1f44d.png"
                       style={{ width: "25px", height: "25px" }}
                     />
                   ) : (
                     <img
+                      alt=""
                       src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/160/apple/129/thumbs-up-sign_1f44d.png"
                       style={{ width: "25px", height: "25px" }}
                     />
