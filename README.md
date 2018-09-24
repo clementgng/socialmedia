@@ -26,7 +26,7 @@ npm start
 
 npm run client
 
-At the moment, every user's profile picture is a picture of Rainn Wilson as Dwight Schrute from the American TV show, The Office
+At the moment, every new user's profile picture is a picture of Rainn Wilson as Dwight Schrute from the American TV show, The Office
 
 TODO in future when I have time:
 
