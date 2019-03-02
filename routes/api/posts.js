@@ -1,4 +1,4 @@
-/* routes/api/posts.js -- Backend API calls relating to a post
+/* routes/api/posts.js -- Backend API calls relating to a post 
 getting a specific post, 
 getting all the posts
 getting/creating/deleting posts
