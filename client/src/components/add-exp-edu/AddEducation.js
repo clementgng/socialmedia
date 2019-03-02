@@ -26,9 +26,14 @@ class AddEducation extends React.Component {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
+  /*static getDerivedStateFromProps(nextProps) {
     if (nextProps.errors) {
       this.setState({ errors: nextProps.errors });
+    }
+  }*/
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.errors !== prevProps.errors) {
+      this.setState({ errors: this.props.errors });
     }
   }
 

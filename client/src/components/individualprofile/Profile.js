@@ -18,8 +18,18 @@ class Profile extends React.Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
+  static getDerivedStateFromProps(nextProps) {
     if (nextProps.profile.profile === null && this.props.profile.loading) {
+      this.props.history.push("/notfound");
+    }
+  }
+  /*static getDerivedStateFromProps(nextProps) {
+    if (nextProps.errors) {
+      this.setState({ errors: nextProps.errors });
+    }
+  }*/
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.profile.profile === null && this.props.profile.loading) {
       this.props.history.push("/notfound");
     }
   }

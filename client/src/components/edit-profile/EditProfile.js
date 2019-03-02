@@ -44,7 +44,7 @@ class CreateProfile extends React.Component {
     this.props.getCurrentProfile();
   }
 
-  componentWillReceiveProps(nextProps) {
+  static getDerivedStateFromProps(nextProps) {
     if (nextProps.errors) {
       this.setState({ errors: nextProps.errors });
     }

@@ -31,6 +31,7 @@ router.get(
   "/",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
+    console.log("IN GET PROFIULE");
     const errors = {};
     Profile.findOne({ user: req.user.id })
       // populate Profile user object with firstName, lastName, and profilePicture
@@ -53,6 +54,7 @@ router.get(
 // /:[name goes here] goes under to req.params.[name goes here]
 router.get("/handle/:handle", (req, res) => {
   const errors = {};
+  console.log("IN HANDLE");
   Profile.findOne({ handle: req.params.handle })
     .populate("user", ["firstName", "lastName", "profilePicture"])
     .then(profile => {

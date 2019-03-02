@@ -182,6 +182,7 @@ router.post(
           profilePicture: req.body.profilePicture
         };
         // Add to the comment array in Post object
+        console.log("A NEW COMMENT", newComment);
         post.comments.push(newComment);
         post.save().then(post => res.json(post));
       })

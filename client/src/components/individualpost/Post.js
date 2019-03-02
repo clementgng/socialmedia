@@ -19,7 +19,7 @@ class Post extends React.Component {
     if (post === null || Object.keys(post).length === 0 || loading) {
       postContent = <Spinner />;
     } else {
-      console.log(post.comments);
+      console.log("this is postcomments", post.comments);
       postContent = (
         <div>
           <PostItem post={post} displayButtons={false} />

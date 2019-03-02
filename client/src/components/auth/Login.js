@@ -21,12 +21,21 @@ class Login extends React.Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
+  /*static getDerivedStateFromProps(nextProps) {
+    console.log(nextProps);
     if (nextProps.auth.isAuthenticated) {
       this.props.history.push("/dashboard");
     }
     if (nextProps.errors) {
       this.setState({ errors: nextProps.errors });
+    }
+  }*/
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push("/dashboard");
+    }
+    if (this.props.errors !== prevProps.errors) {
+      this.setState({ errors: this.props.errors });
     }
   }
 

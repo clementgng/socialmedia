@@ -7,7 +7,9 @@ import Comment from "./Comment";
 class CommentFeed extends React.Component {
   render() {
     const { comments, postID } = this.props;
-    return comments.map(comment => (
+    const pcomments = comments || [];
+    console.log("pcoments", pcomments);
+    return pcomments.map(comment => (
       <React.Fragment>
         <Comment key={comment._id} comment={comment} postID={postID} />
       </React.Fragment>

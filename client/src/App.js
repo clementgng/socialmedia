@@ -100,6 +100,7 @@ class App extends Component {
                 <PrivateRoute exact path="/postfeed" component={Posts} />
               </Switch>
               <Switch>
+                console.log("this the post", Post)
                 <PrivateRoute exact path="/post/:id" component={Post} />
               </Switch>
               <Route exact path="/notfound" component={NotFound} />
