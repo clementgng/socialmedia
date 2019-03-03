@@ -33,16 +33,19 @@ class CreateProfile extends React.Component {
     };
   }
 
-  /*static getDerivedStateFromProps(nextProps) {
+  static getDerivedStateFromProps(nextProps) {
     if (nextProps.errors) {
-      this.setState({ errors: nextProps.errors });
+      return {
+        errors: nextProps.errors
+      };
     }
-  }*/
-  componentDidUpdate(prevProps, prevState) {
+    return null;
+  }
+  /*componentDidUpdate(prevProps, prevState) {
     if (this.props.errors !== prevProps.errors) {
       this.setState({ errors: this.props.errors });
     }
-  }
+  }*/
 
   onChange = event => {
     this.setState({ [event.target.name]: event.target.value });

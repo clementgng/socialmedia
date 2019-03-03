@@ -21,23 +21,27 @@ class Login extends React.Component {
     }
   }
 
-  /*static getDerivedStateFromProps(nextProps) {
+  static getDerivedStateFromProps(nextProps) {
     console.log(nextProps);
     if (nextProps.auth.isAuthenticated) {
-      this.props.history.push("/dashboard");
+      nextProps.history.push("/dashboard");
     }
     if (nextProps.errors) {
-      this.setState({ errors: nextProps.errors });
+      //this.setState({ errors: nextProps.errors });
+      return {
+        errors: nextProps.errors
+      };
     }
-  }*/
-  componentDidUpdate(prevProps, prevState) {
+    return null;
+  }
+  /*componentDidUpdate(prevProps, prevState) {
     if (this.props.auth.isAuthenticated) {
       this.props.history.push("/dashboard");
     }
     if (this.props.errors !== prevProps.errors) {
       this.setState({ errors: this.props.errors });
     }
-  }
+  }*/
 
   onChange = event => {
     this.setState({ [event.target.name]: event.target.value });

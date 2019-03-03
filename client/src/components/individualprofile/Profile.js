@@ -19,8 +19,9 @@ class Profile extends React.Component {
   }
 
   static getDerivedStateFromProps(nextProps) {
-    if (nextProps.profile.profile === null && this.props.profile.loading) {
-      this.props.history.push("/notfound");
+    if (nextProps.profile.profile === null && nextProps.profile.loading) {
+      //this.props.profile.loading) {
+      nextProps.history.push("/notfound");
     }
   }
   /*static getDerivedStateFromProps(nextProps) {
@@ -28,11 +29,11 @@ class Profile extends React.Component {
       this.setState({ errors: nextProps.errors });
     }
   }*/
-  componentDidUpdate(prevProps, prevState) {
+  /*componentDidUpdate(prevProps, prevState) {
     if (this.props.profile.profile === null && this.props.profile.loading) {
       this.props.history.push("/notfound");
     }
-  }
+  }*/
 
   render() {
     const { profile, loading } = this.props.profile;

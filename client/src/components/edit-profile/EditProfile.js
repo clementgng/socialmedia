@@ -46,7 +46,9 @@ class CreateProfile extends React.Component {
 
   static getDerivedStateFromProps(nextProps) {
     if (nextProps.errors) {
-      this.setState({ errors: nextProps.errors });
+      return {
+        errors: nextProps.errors
+      };
     }
     if (nextProps.profile.profile) {
       const profile = nextProps.profile.profile;
@@ -77,7 +79,8 @@ class CreateProfile extends React.Component {
       profile.twitter = !isEmpty(profile.socialmedialinks.twitter)
         ? profile.socialmedialinks.twitter
         : "";
-      this.setState({
+      //this.setState({
+      return {
         handle: profile.handle,
         company: profile.company,
         website: profile.website,
@@ -91,8 +94,9 @@ class CreateProfile extends React.Component {
         facebook: profile.facebook,
         linkedin: profile.linkedin,
         instagram: profile.instagram
-      });
+      };
     }
+    return null;
   }
 
   onChange = event => {
